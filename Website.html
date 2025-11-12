@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Datei herunterladen</title>
+  <style>
+    :root{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:linear-gradient(135deg,#f5f7fb,#e9f0ff);} 
+    .card{background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(20,30,60,0.08);padding:28px 36px;max-width:420px;text-align:center}
+    h1{margin:0 0 12px;font-size:20px}
+    p{margin:0 0 20px;color:#555}
+    .btn{appearance:none;border:0;padding:12px 18px;border-radius:10px;font-weight:600;cursor:pointer;font-size:16px}
+    .btn-primary{background:#2563eb;color:white}
+    .hint{font-size:13px;color:#777;margin-top:14px}
+    a.ghost{display:inline-block;margin-top:12px;font-size:13px;color:#2563eb;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Datei herunterladen</h1>
+    <p>Klicke den Button, um die Datei von Google Drive herunterzuladen.</p>
+
+    <!--
+      Link zu dieser html Datei: https://drive.google.com/file/d/1W6UkJTZjo4tpTPvxLzHixezppP8UFD4Z/view?usp=sharing
+      https://drive.google.com/uc?id=1W6UkJTZjo4tpTPvxLzHixezppP8UFD4Z
+      
+      
+      Ersetze in der Zeile weiter unten den Platzhalter
+      "YOUR_GOOGLE_DRIVE_LINK_HERE" mit dem Link zu deiner Google-Drive-Datei.
+
+      Direktes Herunterladen (empfohlen):
+        - Hole die File-ID aus dem Google-Drive-Share-Link (z.B. https://drive.google.com/file/d/FILE_ID/view)
+        - Baue die Download-URL so: https://drive.google.com/uc?export=download&id=FILE_ID
+
+      Für Google Docs/Sheets/Slides die du als PDF herunterladen willst:
+        - https://docs.google.com/document/d/FILE_ID/export?format=pdf
+        - oder replace "document" mit "spreadsheets"/"presentation" entsprechend.
+    -->
+
+    <button id="downloadBtn" class="btn btn-primary">Datei herunterladen</button>
+  </div>
+
+  <script>
+    const DOWNLOAD_URL = 'https://drive.google.com/uc?export=download&id=1jauLZJY5odSMQWHJUaOhmRmrV7Xzeqb0';
+
+    const btn = document.getElementById('downloadBtn');
+
+    btn.addEventListener('click', () => {
+      // Versuche, den Download im selben Tab zu starten. Manche Google-Links leiten zu einer Vorschau weiter;
+      // in dem Fall öffnen wir die URL in einem neuen Tab.
+      try{
+        window.location.href = DOWNLOAD_URL;
+      }catch(e){
+        window.open(DOWNLOAD_URL, '_blank');
+      }
+    });
+  </script>
+</body>
+</html>
